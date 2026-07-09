@@ -1,0 +1,39 @@
+.slide {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6%;
+  padding: 6%;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-size: clamp(1.5rem, 7cqw, 3.5rem);
+  color: #ffcced;
+  text-shadow: 0.09em 0.08em 0.1em #db028f;
+  line-height: 1;
+}
+
+.donut {
+  width: 1em;
+  height: 1em;
+  margin: 0 0.05em;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4%;
+  width: 80%;
+}
+
+.card {
+  width: 100%;
+  height: auto;
+  border-radius: 8%;
+}
