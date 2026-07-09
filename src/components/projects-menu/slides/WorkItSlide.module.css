@@ -12,12 +12,12 @@
 
 .title {
   color: #ffffff;
-  font-size: clamp(1.5rem, 8cqw, 4rem);
+  font-size: 15cqw;
   line-height: 1;
 }
 
 .lineart {
-  max-width: 70%;
+  max-width: 78%;
   max-height: 60%;
   object-fit: contain;
 }

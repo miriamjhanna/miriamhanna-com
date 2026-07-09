@@ -116,7 +116,7 @@ function HomeContent() {
             <div className={styles.polaroidStack}>
               <Polaroid
                 variant="projects"
-                rotate={-10}
+                rotate={-8}
                 fadeInDelay={played ? 0 : 1}
                 onClick={() => navigate('/projects')}
                 className={styles.stackedProjects}

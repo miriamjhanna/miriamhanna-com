@@ -46,12 +46,13 @@
   aspect-ratio: 800 / 1086;
 }
 
-/* The "My Projects" polaroid peeks out from under the About polaroid like a photo stack;
-   when the About polaroid moves to its section, this one is revealed in its place. */
+/* The "My Projects" polaroid hides exactly behind the About polaroid (as in the original);
+   when the About polaroid moves to its section, this one is revealed in its place. Exact
+   overlap matters: any offset makes the hidden polaroid's glow stick out as a chunky slab. */
 .stackedProjects {
   position: absolute;
-  left: 4%;
-  top: 3%;
+  left: 0;
+  top: 0;
   z-index: 1;
 }
 

@@ -22,13 +22,15 @@
 }
 
 /* Screen cutout as a percentage of the camera frame, so it scales as one unit
-   (architecture doc §6, rule 5). container-type lets the slides size type in cqw. */
+   (architecture doc §6, rule 5). Values are pixel-measured from the dark screen recess in
+   digital_camera.png itself (750x500: x 54-521, y 74-440), not the original site's overlay
+   numbers, which bled onto the bezel. container-type lets the slides size type in cqw. */
 .screen {
   position: absolute;
-  top: 9.94%;
-  left: 7.13%;
-  width: 62.6%;
-  height: 78.6%;
+  top: 14.8%;
+  left: 7.2%;
+  width: 62.4%;
+  height: 73.4%;
   overflow: hidden;
   container-type: inline-size;
 }

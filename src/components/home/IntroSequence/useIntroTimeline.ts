@@ -46,11 +46,12 @@ export function useIntroTimeline(
         0.2,
       )
 
-      // Blank polaroid ejects downward — distance as a fraction of the stage height
-      // (the original moved 360px inside a 700px-tall stage ≈ 51.4%)
+      // Blank polaroid ejects downward — distance as a fraction of the stage WIDTH so it's
+      // independent of the stage's aspect ratio (the original moved 360px in a 1000px-wide
+      // stage = 36%)
       tl.to(
         '.intro-blank',
-        { duration: 9, y: () => stage.clientHeight * 0.514, ease: 'power1.inOut' },
+        { duration: 9, y: () => stage.clientWidth * 0.36, ease: 'power1.inOut' },
         1,
       )
 

@@ -1,7 +1,9 @@
+/* Even neon halo hugging the polaroid, matching the live original's look (its 4px/4px/10px
+   drop-shadow rendered pre-transform, then scaled 1.5x — i.e. a ~15px near-centered glow). */
 .polaroid {
   position: relative;
   width: 100%;
-  filter: drop-shadow(0.25rem 0.25rem 0.625rem var(--color-accent));
+  filter: drop-shadow(0.25rem 0.25rem 1rem var(--color-accent));
 }
 
 .clickable {

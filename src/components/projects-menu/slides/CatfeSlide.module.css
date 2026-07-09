@@ -4,8 +4,9 @@
   background: #000000;
 }
 
+/* contain (letterboxed on black), matching the original — cover cropped the art's sides */
 .image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
