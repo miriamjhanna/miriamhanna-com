@@ -6,16 +6,19 @@ contact.
 
 **Live site:** not yet deployed — link goes here once the custom domain is attached.
 
-> Status: early scaffold. The app skeleton, tooling, and repo are set up; the actual pages and
-> animations have not been built yet.
+> Status: shared layout/theme system in place — navbar, footer, per-project accent theming,
+> particle background, and routing all work across all 8 pages. Still to come: the camera/
+> polaroid intro animation, categorized skills chips, project device mockups, and the contact
+> form itself.
 
 ## Tech stack
 
 - [Vite](https://vite.dev/) + [React](https://react.dev/) + TypeScript
 - React Router
-- [GSAP](https://gsap.com/) (sequenced intro animation) + [Framer Motion](https://www.framer.com/motion/) (shared-element transitions, micro-interactions)
+- [@tsparticles/react](https://particles.js.org/) for the ambient background
+- [GSAP](https://gsap.com/) (sequenced intro animation) + [Framer Motion](https://www.framer.com/motion/) (shared-element transitions, micro-interactions) — not wired in yet, added in a later pass
 - CSS Modules
-- [Formspree](https://formspree.io/) (contact form — no email address is stored in this repo)
+- [Formspree](https://formspree.io/) (contact form — no email address is stored in this repo) — not wired in yet
 - ESLint + Prettier
 - Docker (multi-stage build → nginx) for deployment
 
@@ -37,10 +40,13 @@ Requires Node 24 (see `.nvmrc`).
 ```
 src/
   routes/        # one file per page/route
-  components/    # organized by feature area (home, skills, projects-menu, project-detail, contact, layout, ui)
+  components/
+    layout/      # Navbar, Footer, SocialLinks, AmbientBackground, PageLayout (shared wrapper)
+    ui/           # NavLink, IconButton
+    home/, skills/, projects-menu/, project-detail/, contact/   # added as each is built out
   hooks/
-  data/          # typed content: skills, projects, résumé
-  styles/        # global styles + design tokens
+  data/          # typed content: skills.ts, projects.ts, resumeContent.ts
+  styles/        # global.css, tokens.css (theme/breakpoints)
   assets/
 ```
 
