@@ -13,16 +13,18 @@ import photoshop from '../assets/images/skills/photoshop.png'
 import illustrator from '../assets/images/skills/illustrator.png'
 import afterEffects from '../assets/images/skills/aftereffects.png'
 import unity from '../assets/images/skills/unity.png'
+// Generated brand marks (simple-icons glyphs + Devicon AWS wordmark, both MIT-licensed),
+// rendered to transparent PNGs in each brand's official color to match the existing badges
+// (architecture doc §5). AWS's dark wordmark is recolored white for the dark theme.
+import react from '../assets/images/skills/react.png'
+import nodejs from '../assets/images/skills/nodejs.png'
+import aws from '../assets/images/skills/aws.png'
+import gcp from '../assets/images/skills/gcp.png'
+import n8n from '../assets/images/skills/n8n.png'
 
 export interface Skill {
   name: string
-  /**
-   * Icon asset import, when one exists. Node.js, AWS, GCP, React, and n8n don't have an
-   * icon asset yet — architecture doc §5 calls for sourcing simple-icons brand marks cropped
-   * to match the existing 15 badges' style, which hasn't been done. SkillChip renders a
-   * text-only chip when this is undefined rather than a broken image.
-   */
-  icon?: string
+  icon: string
 }
 
 export interface SkillCategoryData {
@@ -46,17 +48,17 @@ export const skillCategories: SkillCategoryData[] = [
     items: [
       { name: 'HTML', icon: html },
       { name: 'CSS', icon: css },
-      { name: 'React' },
+      { name: 'React', icon: react },
     ],
   },
   {
     category: 'Backend & Cloud',
     items: [
-      { name: 'Node.js' },
-      { name: 'AWS' },
-      { name: 'GCP' },
+      { name: 'Node.js', icon: nodejs },
+      { name: 'AWS', icon: aws },
+      { name: 'GCP', icon: gcp },
       { name: 'Firebase', icon: firebase },
-      { name: 'n8n' },
+      { name: 'n8n', icon: n8n },
     ],
   },
   {

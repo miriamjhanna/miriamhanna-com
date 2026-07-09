@@ -9,8 +9,8 @@ contact.
 > Status: the signature camera/polaroid intro is live — a ~16s GSAP sequence (skippable, and
 > played once per session) that hands off to Framer Motion shared-element transitions: the
 > printed polaroid settles into the hero, and clicking it carries it down into the About
-> section. Still to come: categorized skills chips, project device mockups, and the contact
-> form itself.
+> section. The Skills section shows 20 skills as categorized chips. Still to come: project
+> device mockups and the contact form itself.
 
 ## Tech stack
 
@@ -21,6 +21,7 @@ contact.
 - [Framer Motion](https://www.framer.com/motion/) for shared-element polaroid transitions (`layoutId`) and micro-interactions
 - CSS Modules
 - [Formspree](https://formspree.io/) (contact form — no email address is stored in this repo) — not wired in yet
+- [simple-icons](https://simpleicons.org/) (dev-only) — source glyphs for the generated React/Node.js/GCP/n8n skill badges; the AWS badge comes from [Devicon](https://devicon.dev/) (both MIT-licensed)
 - ESLint + Prettier
 - Docker (multi-stage build → nginx) for deployment
 
@@ -46,7 +47,8 @@ src/
     layout/      # Navbar, Footer, SocialLinks, AmbientBackground, PageLayout (shared wrapper)
     ui/           # NavLink, IconButton
     home/        # IntroSequence/ (GSAP timeline), Polaroid, TypedTextReveal, ArrowPointer
-    skills/, projects-menu/, project-detail/, contact/   # added as each is built out
+    skills/      # SkillsSection, SkillCategory, SkillChip (categorized chip layout)
+    projects-menu/, project-detail/, contact/   # added as each is built out
   context/       # IntroContext (nav reveal timing, logo-click intro replay)
   hooks/         # useTypedText, useIntroPlayedOnce, useReducedMotion
   data/          # typed content: skills.ts, projects.ts, resumeContent.ts

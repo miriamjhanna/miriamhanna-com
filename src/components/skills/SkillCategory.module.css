@@ -1,0 +1,23 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.heading {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* One wrapping row of chips per category — layout comes entirely from flex,
+   replacing the original's per-box absolute pixel positions (architecture doc §3.3) */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+}

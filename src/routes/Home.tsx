@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { PageLayout } from '../components/layout/PageLayout'
+import { SkillsSection } from '../components/skills/SkillsSection'
 import { IntroSequence } from '../components/home/IntroSequence/IntroSequence'
 import { Polaroid } from '../components/home/Polaroid'
 import { TypedTextReveal } from '../components/home/TypedTextReveal'
@@ -161,8 +162,7 @@ function HomeContent() {
           </section>
 
           <section id="skills" className={styles.skills}>
-            <h2>Skills</h2>
-            <p className={styles.note}>Coming soon.</p>
+            <SkillsSection />
           </section>
         </>
       )}

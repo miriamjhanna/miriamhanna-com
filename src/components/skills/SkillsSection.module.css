@@ -1,0 +1,19 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+  width: min(92vw, var(--content-max-width));
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.5rem;
+}
+
+.underline {
+  width: 7.8rem;
+  height: 0.1875rem;
+  background: var(--color-accent);
+  margin-top: calc(-1 * var(--space-lg));
+}
