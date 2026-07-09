@@ -2,7 +2,9 @@ export type ProjectTheme = 'default' | 'memory' | 'catfe'
 
 export interface VideoWalkthrough {
   source: 'file' | 'youtube'
+  /** File path (public/) or YouTube id, per source. */
   src: string
+  /** Poster image shown before playback (long-form video is not preloaded). */
   poster: string
 }
 
@@ -12,9 +14,9 @@ export interface Project {
   title: string
   tagline: string
   theme: ProjectTheme
-  /** Ambient "live screen" loop shown in the device mockup. Not yet ported/compressed — see architecture doc §8.2. */
+  /** Muted "live screen" loop shown in the device mockup. Compressed .mp4 under public/videos. */
   video?: string
-  /** Long-form walkthrough section. Not yet wired up — see architecture doc §8.2. */
+  /** Long-form narrated walkthrough section (architecture doc §8.2). */
   walkthrough?: VideoWalkthrough
   /**
    * Optional — Catfe Au Lait's original site has no repo link at all, so this isn't
@@ -30,6 +32,7 @@ export const projects: Project[] = [
     title: 'Memory',
     tagline: 'Android card-matching game with dynamic boards and swappable themes.',
     theme: 'memory',
+    video: '/videos/memory-demo.mp4',
     repoUrl: 'https://github.com/miriamjhanna/Memory',
   },
   {
@@ -38,6 +41,7 @@ export const projects: Project[] = [
     title: 'Work It!',
     tagline: 'Android workout tracker with Firebase-backed exercise logging.',
     theme: 'default',
+    video: '/videos/workit-demo.mp4',
     repoUrl: 'https://github.com/miriamjhanna/Work-It',
   },
   {
@@ -46,5 +50,12 @@ export const projects: Project[] = [
     title: 'Catfe Au Lait',
     tagline: '2D Unity café game with hand-crafted art direction.',
     theme: 'catfe',
+    // One asset in two roles: the muted mockup loop and the narrated walkthrough (§8.2).
+    video: '/videos/catfe-walkthrough.mp4',
+    walkthrough: {
+      source: 'file',
+      src: '/videos/catfe-walkthrough.mp4',
+      poster: '/videos/catfe-walkthrough-poster.jpg',
+    },
   },
 ]

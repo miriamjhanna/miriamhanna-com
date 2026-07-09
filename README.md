@@ -9,9 +9,10 @@ contact.
 > Status: the signature camera/polaroid intro is live — a ~16s GSAP sequence (skippable, and
 > played once per session) that hands off to Framer Motion shared-element transitions: the
 > printed polaroid settles into the hero, and clicking it carries it down into the About
-> section. The Skills section shows 20 skills as categorized chips, and the Projects page is a
-> working digital-camera carousel (flash + slide transitions, touch controls on mobile). Still
-> to come: project detail pages with device mockups + demo videos, and the contact form.
+> section. The Skills section shows 20 skills as categorized chips, the Projects page is a
+> working digital-camera carousel, and each project has a detail page with a device mockup
+> playing its demo video (plus a click-to-play walkthrough and a walking-cat sprite on Catfe).
+> Still to come: the contact form.
 
 ## Tech stack
 
@@ -50,13 +51,20 @@ src/
     home/        # IntroSequence/ (GSAP timeline), Polaroid, TypedTextReveal, ArrowPointer
     skills/      # SkillsSection, SkillCategory, SkillChip (categorized chip layout)
     projects-menu/   # CameraCarousel, CameraFlash, ProjectSlide, slides/ (per-project screens)
-    project-detail/, contact/   # added as each is built out
+    project-detail/  # DeviceMockup, DemoVideo, VideoWalkthrough, WalkingCat, shared layout
+    contact/         # added when built out
   context/       # IntroContext (nav reveal timing, logo-click intro replay)
   hooks/         # useTypedText, useIntroPlayedOnce, useReducedMotion
   data/          # typed content: skills.ts, projects.ts, resumeContent.ts
   styles/        # global.css, tokens.css (theme/breakpoints)
   assets/
+public/
+  videos/        # compressed demo/walkthrough .mp4s + poster, served as static files
 ```
+
+Demo videos are H.264 `.mp4`s compressed from the original screen recordings (the source
+`.mov`s — up to 265 MB — are not in the repo). They live in `public/videos/` and are
+referenced by path from `src/data/projects.ts`.
 
 ## Deployment
 
