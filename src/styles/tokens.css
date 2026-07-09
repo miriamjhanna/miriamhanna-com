@@ -1,0 +1,45 @@
+/*
+  Breakpoints (reference only — CSS custom properties can't be used inside
+  @media conditions natively, so every module uses these literal values):
+    mobile:  < 640px
+    tablet:  640px – 1024px
+    desktop: > 1024px
+*/
+
+:root {
+  /* Shared base — one dark background across every page (see architecture doc §7:
+     unify the three previously-clashing themes into one system with per-section accents) */
+  --color-bg: #1a1a1a;
+  --color-bg-raised: #2a2a2a;
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.7);
+
+  /* Default accent (used by Home, Projects Menu, Resume, Contact, Work It!) */
+  --color-accent: #45e3e0;
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+
+  /* Layout */
+  --navbar-height: 5.625rem; /* 90px */
+  --content-max-width: 75rem;
+
+  --radius-md: 0.625rem;
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+}
+
+/* Per-project accent overrides — one accent variable swapped per route,
+   not a fully separate palette per page. */
+[data-theme='memory'] {
+  --color-accent: #ff6fb5;
+}
+
+[data-theme='catfe'] {
+  --color-accent: #c8ac89;
+}

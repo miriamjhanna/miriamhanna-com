@@ -1,0 +1,13 @@
+.iconButton {
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+.iconButton:hover,
+.iconButton:focus-visible {
+  transform: scale(1.15);
+}
+
+.iconButton img {
+  display: block;
+}
