@@ -12,7 +12,9 @@ contact.
 > section. The Skills section shows 20 skills as categorized chips, the Projects page is a
 > working digital-camera carousel, and each project has a detail page with a device mockup
 > playing its demo video (plus a click-to-play walkthrough and a walking-cat sprite on Catfe).
-> The Contact page has a validated Formspree form. Remaining: the Docker deployment setup.
+> The Contact page has a validated Formspree form, and the site ships with a Docker + nginx
+> deployment setup. The build is feature-complete; what's left is external (create the Formspree
+> form, pick a host, attach the domain).
 
 ## Tech stack
 
@@ -75,8 +77,25 @@ referenced by path from `src/data/projects.ts`.
 
 ## Deployment
 
-Built as a static site and served via a multi-stage Docker build (Node build stage → nginx
-runtime stage). See `Dockerfile` (added once the app is ready to deploy) for details.
+Built as a static site and served via a multi-stage Docker build (`Dockerfile`): a Node stage
+runs `npm run build`, then an nginx stage serves the static `dist/`. `nginx.conf` handles the
+SPA fallback (so client-side routes like `/projects/memory` resolve), long-cache headers for
+content-hashed assets, and HTTP range requests for the videos.
+
+```
+# Build the image (pass the Formspree id so the contact form works in production):
+docker build --build-arg VITE_FORMSPREE_ID=your_form_id -t miriamhanna-com .
+docker run -p 8080:80 miriamhanna-com   # then open http://localhost:8080
+```
+
+Two hosting paths:
+
+- **VPS** — `docker compose up -d` runs the app behind **Caddy** (`docker-compose.yml` +
+  `Caddyfile`), which provisions and renews HTTPS certificates automatically. Point
+  `miriamhanna.com`'s DNS A record at the server; `www` redirects to the apex.
+- **Container platform** (Fly.io / Railway / Render) — push the image built from the
+  `Dockerfile`; the platform terminates TLS and routes a custom domain to it. `docker-compose.yml`
+  and `Caddyfile` aren't needed on this path.
 
 ## License
 

@@ -1,0 +1,10 @@
+# Caddy auto-provisions and renews Let's Encrypt certificates for these names.
+# www redirects to the bare apex, which is canonical (architecture doc §9).
+
+www.miriamhanna.com {
+	redir https://miriamhanna.com{uri} permanent
+}
+
+miriamhanna.com {
+	reverse_proxy app:80
+}

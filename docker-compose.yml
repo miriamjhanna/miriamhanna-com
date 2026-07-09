@@ -1,0 +1,32 @@
+# VPS deployment (architecture doc §9, Path A): the static site behind Caddy, which handles
+# HTTPS certificates automatically via Let's Encrypt. Point miriamhanna.com's DNS A record at
+# the server, then run: docker compose up -d
+#
+# For a container platform (Fly.io / Railway / Render — Path B) you don't need this file at all;
+# push the image built from the Dockerfile and let the platform terminate TLS.
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        # Supply the real id here or via the shell: VITE_FORMSPREE_ID=xxxx docker compose build
+        VITE_FORMSPREE_ID: ${VITE_FORMSPREE_ID:-}
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:alpine
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
+volumes:
+  caddy_data:
+  caddy_config:
