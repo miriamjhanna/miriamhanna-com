@@ -12,7 +12,7 @@ contact.
 > section. The Skills section shows 20 skills as categorized chips, the Projects page is a
 > working digital-camera carousel, and each project has a detail page with a device mockup
 > playing its demo video (plus a click-to-play walkthrough and a walking-cat sprite on Catfe).
-> Still to come: the contact form.
+> The Contact page has a validated Formspree form. Remaining: the Docker deployment setup.
 
 ## Tech stack
 
@@ -40,6 +40,13 @@ npm run format    # run Prettier
 
 Requires Node 24 (see `.nvmrc`).
 
+### Contact form
+
+The contact form posts to [Formspree](https://formspree.io/). Copy `.env.example` to `.env.local`
+and set `VITE_FORMSPREE_ID` to your form id (the part after `/f/` in the form URL). Until it's
+set, the form validates but shows a "not configured" message directing visitors to GitHub/LinkedIn.
+The id is public and is not an email address, so no contact address is exposed anywhere.
+
 ## Project structure
 
 ```
@@ -52,7 +59,7 @@ src/
     skills/      # SkillsSection, SkillCategory, SkillChip (categorized chip layout)
     projects-menu/   # CameraCarousel, CameraFlash, ProjectSlide, slides/ (per-project screens)
     project-detail/  # DeviceMockup, DemoVideo, VideoWalkthrough, WalkingCat, shared layout
-    contact/         # added when built out
+    contact/         # ContactForm (Formspree, client-side validation, honeypot)
   context/       # IntroContext (nav reveal timing, logo-click intro replay)
   hooks/         # useTypedText, useIntroPlayedOnce, useReducedMotion
   data/          # typed content: skills.ts, projects.ts, resumeContent.ts

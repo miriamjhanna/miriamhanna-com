@@ -21,3 +21,8 @@
   color: var(--color-text-muted);
   max-width: 32rem;
 }
+
+.orReach {
+  margin-top: var(--space-md);
+  color: var(--color-text-muted);
+}
