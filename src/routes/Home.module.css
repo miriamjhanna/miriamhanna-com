@@ -1,20 +1,151 @@
-.section {
-  min-height: 100vh;
+/* ---------- Hero / intro ---------- */
+
+.hero {
+  min-height: calc(100vh - var(--navbar-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-margin-top: var(--navbar-height);
+  padding: var(--space-lg) 0;
+}
+
+.heroContent {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  width: min(92vw, var(--content-max-width));
+}
+
+.heroText {
+  flex: 1;
+  min-width: 0;
+}
+
+.typedHeadline {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(1.5rem, 3.6vw, 3rem);
+  line-height: 1.3;
+  /* Reserve two lines so the layout doesn't jump while the text types out */
+  min-height: 2.6em;
+}
+
+.arrow {
+  position: absolute;
+  left: 32%;
+  top: 44%;
+  width: 32%;
+  pointer-events: none;
+}
+
+.polaroidStack {
+  position: relative;
+  flex: none;
+  width: clamp(13rem, 24vw, 21rem);
+  aspect-ratio: 800 / 1086;
+}
+
+/* The "My Projects" polaroid peeks out from under the About polaroid like a photo stack;
+   when the About polaroid moves to its section, this one is revealed in its place. */
+.stackedProjects {
+  position: absolute;
+  left: 4%;
+  top: 3%;
+  z-index: 1;
+}
+
+.stackedAbout {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+/* ---------- About ---------- */
+
+.about {
+  scroll-margin-top: var(--navbar-height);
+  padding: var(--space-2xl) 0;
+}
+
+.aboutInner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xl);
+  width: min(92vw, var(--content-max-width));
+  margin: 0 auto;
+}
+
+.aboutSlot {
+  flex: none;
+  width: clamp(13rem, 22vw, 19rem);
+  aspect-ratio: 800 / 1086;
+}
+
+.aboutText {
+  flex: 1;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  background: rgba(69, 227, 224, 0.16);
+  border-left: 0.5rem solid var(--color-accent);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  min-height: 16em;
+}
+
+.aboutHint {
+  color: var(--color-text-muted);
+}
+
+/* ---------- Skills placeholder ---------- */
+
+.skills {
+  scroll-margin-top: var(--navbar-height);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
   gap: var(--space-md);
+  text-align: center;
   padding: var(--space-2xl) var(--space-md);
 }
 
-.section h1,
-.section h2 {
+.skills h2 {
   font-size: 2.5rem;
 }
 
 .note {
   color: var(--color-text-muted);
   max-width: 32rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 64rem) {
+  .arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 40rem) {
+  .heroContent {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: var(--space-2xl);
+  }
+
+  .polaroidStack {
+    width: clamp(11rem, 55vw, 15rem);
+  }
+
+  .aboutInner {
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .aboutSlot {
+    width: clamp(11rem, 55vw, 15rem);
+  }
 }

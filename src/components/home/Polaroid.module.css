@@ -1,0 +1,24 @@
+.polaroid {
+  position: relative;
+  width: 100%;
+  filter: drop-shadow(0.25rem 0.25rem 0.625rem var(--color-accent));
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.frame {
+  width: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.label {
+  position: absolute;
+  bottom: 11%;
+  left: 45%;
+  transform: translateX(-50%);
+  width: 61%;
+  pointer-events: none;
+}

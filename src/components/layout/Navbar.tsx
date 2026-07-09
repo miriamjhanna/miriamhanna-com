@@ -2,17 +2,21 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { NavLink } from '../ui/NavLink'
 import { projects } from '../../data/projects'
+import { useIntro } from '../../context/IntroContext'
 import logo from '../../assets/images/logo.png'
 import styles from './Navbar.module.css'
 
 /**
  * Projects dropdown toggles on click with aria-expanded, instead of the original site's
  * hover-only reveal — architecture doc §3.6 flags hover-only dropdowns as not touch/keyboard
- * accessible.
+ * accessible. Nav links stay hidden until the home intro reveals them (or instantly on any
+ * other page); the logo replays the intro from scratch, matching the original behavior but
+ * without its location.reload() hard refresh.
  */
 export function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLLIElement>(null)
+  const { navRevealed, replayIntro } = useIntro()
 
   useEffect(() => {
     if (!dropdownOpen) return
@@ -37,12 +41,12 @@ export function Navbar() {
 
   return (
     <div className={styles.navbar}>
-      <Link to="/" className={styles.logoAndName}>
+      <Link to="/" className={styles.logoAndName} onClick={replayIntro}>
         <img className={styles.logo} src={logo} alt="Miriam Hanna logo" />
         <span className={styles.siteOwnerName}>Miriam Hanna</span>
       </Link>
 
-      <ul className={styles.navLinks}>
+      <ul className={`${styles.navLinks} ${navRevealed ? '' : styles.navLinksHidden}`}>
         <li>
           <NavLink to="/#home">Home</NavLink>
         </li>

@@ -6,9 +6,10 @@ contact.
 
 **Live site:** not yet deployed — link goes here once the custom domain is attached.
 
-> Status: shared layout/theme system in place — navbar, footer, per-project accent theming,
-> particle background, and routing all work across all 8 pages. Still to come: the camera/
-> polaroid intro animation, categorized skills chips, project device mockups, and the contact
+> Status: the signature camera/polaroid intro is live — a ~16s GSAP sequence (skippable, and
+> played once per session) that hands off to Framer Motion shared-element transitions: the
+> printed polaroid settles into the hero, and clicking it carries it down into the About
+> section. Still to come: categorized skills chips, project device mockups, and the contact
 > form itself.
 
 ## Tech stack
@@ -16,7 +17,8 @@ contact.
 - [Vite](https://vite.dev/) + [React](https://react.dev/) + TypeScript
 - React Router
 - [@tsparticles/react](https://particles.js.org/) for the ambient background
-- [GSAP](https://gsap.com/) (sequenced intro animation) + [Framer Motion](https://www.framer.com/motion/) (shared-element transitions, micro-interactions) — not wired in yet, added in a later pass
+- [GSAP](https://gsap.com/) (`@gsap/react`) for the sequenced camera/polaroid intro timeline
+- [Framer Motion](https://www.framer.com/motion/) for shared-element polaroid transitions (`layoutId`) and micro-interactions
 - CSS Modules
 - [Formspree](https://formspree.io/) (contact form — no email address is stored in this repo) — not wired in yet
 - ESLint + Prettier
@@ -43,8 +45,10 @@ src/
   components/
     layout/      # Navbar, Footer, SocialLinks, AmbientBackground, PageLayout (shared wrapper)
     ui/           # NavLink, IconButton
-    home/, skills/, projects-menu/, project-detail/, contact/   # added as each is built out
-  hooks/
+    home/        # IntroSequence/ (GSAP timeline), Polaroid, TypedTextReveal, ArrowPointer
+    skills/, projects-menu/, project-detail/, contact/   # added as each is built out
+  context/       # IntroContext (nav reveal timing, logo-click intro replay)
+  hooks/         # useTypedText, useIntroPlayedOnce, useReducedMotion
   data/          # typed content: skills.ts, projects.ts, resumeContent.ts
   styles/        # global.css, tokens.css (theme/breakpoints)
   assets/

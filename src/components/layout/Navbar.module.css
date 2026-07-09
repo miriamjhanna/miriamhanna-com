@@ -39,6 +39,15 @@
   display: flex;
   align-items: center;
   gap: var(--space-lg);
+  transition:
+    opacity 1s ease,
+    visibility 1s;
+}
+
+/* Hidden until the home intro timeline reveals them (t≈10), matching the original */
+.navLinksHidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .navLinks li {
@@ -90,12 +99,30 @@
   font-weight: bold;
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 48rem) {
+  .navbar {
+    padding: 0 var(--space-md);
+  }
+
   .siteOwnerName {
     display: none;
   }
 
+  .logo {
+    height: 2.75rem;
+    flex: none;
+  }
+
   .navLinks {
-    gap: var(--space-md);
+    gap: var(--space-sm);
+    overflow-x: auto;
+    /* fixed-height navbar can't wrap onto a second row */
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  .navLinks li a,
+  .dropdownTrigger {
+    font-size: 0.85rem;
   }
 }
